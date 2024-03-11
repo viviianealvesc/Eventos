@@ -6,15 +6,12 @@
 
         <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
         <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/js/scripts.js"></script>
     </head>
     <body>
-        <h1> Olá mundo! </h1>
+        <h1>Olá mundo!</h1>
 
         @if($nome == 'viviane' and $idade == 20)
           <p>O seu nome é {{$nome}}, e voce tem {{$idade}} anos</p>
