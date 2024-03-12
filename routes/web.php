@@ -27,6 +27,22 @@ Route::get('/', function() {
 
 });
 
+Route::get('/produto', function() {
+
+    return view('produtos');
+
+});
+
+Route::get('/produto/{id}', function($id) {
+
+    return view('produto', ['id' => $id]);
+
+});
+
+
+
+
+
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
