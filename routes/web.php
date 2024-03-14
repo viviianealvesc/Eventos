@@ -20,28 +20,13 @@ Route::get('/', [EventController::class, 'index']);
 
 Route::get('/events/create', [EventController::class, 'create']);
 
-Route::get('/produto', function() {
-
-    return view('produtos');
-
-});
-
-Route::get('/produto/{id}', function($id) {
-
-    return view('produto', ['id' => $id]);
-
-});
 
 
 
 
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
 
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+
+
 
 require __DIR__.'/auth.php';
