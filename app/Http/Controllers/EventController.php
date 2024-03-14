@@ -4,22 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+class EventController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
+    public function index() {
+        
+        $nome = "viviane";
+        $idade = 21;
+        $descricao = 'Esta é uma descrição deste evento que ira acontecer no dia 02/01';
+    
+        return view('welcome', [
+            'nome' => $nome, 
+            'idade' => $idade,
+            'descricao' => $descricao
+        ]);
+    
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
+    public function create() {
+        return view('events.create');
     }
 
     /**
