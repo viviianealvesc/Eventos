@@ -34,6 +34,16 @@ header {
     border: 2px solid #8A60FF;
 }
 
+.msg {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #C3E6BC;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: center;
+    padding: 10px;
+}
+
 /* navbar */
 #navbar {
     justify-content: space-between;
@@ -86,14 +96,13 @@ header {
 
 #cards-container {
     display: flex;
-    justify-content: space-around;
     text-align: center;
 }
 
 #events-container .card {
     border-radius: 10px;
     padding: 0;
-    margin: 5px;
+    margin: 40px;
 }
 
 #events-container img {
@@ -125,6 +134,32 @@ header {
     text-align: center;
     margin-bottom: 0.9rem;
 }
+
+/* Event create page */
+#event-create-container {
+    padding: 30px;
+    margin: 0 auto;
+}
+
+#event-create-container label {
+    font-weight: bold;
+}
+
+.botao {
+    width: 20%;
+}
+
+#event-create-container input,
+#event-create-container select,
+#event-create-container textarea {
+    font-size: 18px;
+}
+
+.form-group {
+    padding: 10px;
+}
+
+
 
 footer {
     text-align: center;
