@@ -20,14 +20,14 @@
       <nav class="navbar navbar-expand-lg bg-light">
          <div class="collapse navbar-collapse justify-content-between" id="navbar">
             <a href="/" class="navbar-bland">
-               <img width="70" src="/img/calendario.png" alt="Logo">
+               <img width="70" src="/img/icone.png" alt="Logo">
             </a>
             <ul class="navbar-nav">
                <li class="nav-item">
                   <a href="/" class="nav-link">Eventos</a>
                </li>
                <li class="nav-item">
-                  <a href="/events/create" class="nav-link">Criar Eventos</a>
+                  <a href="/events/create" class="nav-link">Criar eventos</a>
                </li>
                <li class="nav-item">
                   <a href="/" class="nav-link">Entrar</a>

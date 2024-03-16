@@ -29,9 +29,18 @@ class EventController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+        $event = new Event;
+
+        $event->title = $request->title;
+        $event->descripition = $request->descripition;
+        $event->city = $request->city;
+        $event->private = $request->private;
+
+        $event->save();
+
+        return redirect('/');
+       
     }
 
     /**

@@ -1,5 +1,141 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/*Geral*/
 * {
     font-family: Roboto;
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 100px;
+    position: relative;
+}
+
+header {
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+}
+
+.row {
+    margin: 0;
+}
+
+.container-fluid {
+   padding: 0;
+}
+
+.btn-primary {
+    background-color: #8A60FF;
+    border: 2px solid #7344f2;
+}
+
+.btn-primary:hover {
+    background-color: #7344f2;
+    border: 2px solid #8A60FF;
+}
+
+/* navbar */
+#navbar {
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+
+.navbar a {
+    color: #757575;
+}
+
+.navbar a:hover {
+    color: #8A60FF;
+}
+
+
+#search-container {
+    background-image: url("../img/banner1.png");
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+    padding: 50px;
+    text-align: center;
+}
+
+#search-container h2 {
+    color: #8A60FF;
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+#search-container form {
+    width: 50%;
+    margin: 0 auto;
+}
+
+/* Event list */
+#events-container {
+    padding: 50px;
+}
+
+#events-container h2 {
+    margin-bottom: 10px;
+}
+
+#events-container .subtitle {
+    color: #757575;
+    margin-bottom: 30px;
+}
+
+#cards-container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+#events-container .card {
+    border-radius: 10px;
+    padding: 0;
+    margin: 5px;
+}
+
+#events-container img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card .card-date {
+    color: #ccc;
+    margin-top: 0.5rem;
+}
+
+.card .card-title {
+    color: #212121;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.card-participants {
+    font-size: 20px;
+    color: #757575;
+}
+
+.btn-primary {
+    width: 50%;
+    display: flex;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 0.9rem;
+}
+
+footer {
+    text-align: center;
+    background-color: #353E48;
+    color: #fff;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin-bottom: 0;
 }
