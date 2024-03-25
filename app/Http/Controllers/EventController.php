@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\Event;
 
+use App\Models\User;
+
 class EventController extends Controller
 {
     /**
@@ -78,9 +80,21 @@ class EventController extends Controller
      */
     public function show(string $id) {
 
+        //Pega um id de um evento especifico
         $event = Event::findOrFail($id);
 
-        return view('events.show', ['event' => $event]);
+        //Pega o id de um usuario especifico
+        $eventOwer = User::where('id', $event->user_id)->first()->toArray();
+
+        return view('events.show', ['event' => $event, 'eventOwer' => $eventOwer]);
+    }
+
+    public function dashboard() {
+        $user = auth()->user();
+
+        $events = $user->events; //este events foi criado la no model
+
+        return view('events.dashboard', ['events' => $events]);
     }
 
     /**
@@ -88,7 +102,7 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
-        //
+    
     }
 
     /**
@@ -104,6 +118,9 @@ class EventController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Event::findOrFail($id)->delete();
+
+        return redirect('/dashboard')->with('msg', 'Evento deletado com sucesso!');
+
     }
 }

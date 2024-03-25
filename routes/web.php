@@ -20,6 +20,8 @@ Route::get('/', [EventController::class, 'index'])->name('/');
 Route::get('/events/create', [EventController::class, 'create'])->name('events.create')->middleware('auth');
 Route::post('/events', [EventController::class, 'store'])->name('events.store');
 Route::get('/events/{id}', [EventController::class, 'show']);
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->name('events.destroy');
 
 
 
@@ -32,12 +34,3 @@ Route::get('/events/{id}', [EventController::class, 'show']);
 
 require __DIR__.'/auth.php';
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
