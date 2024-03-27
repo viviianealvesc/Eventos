@@ -102,6 +102,9 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
+        $event = Event::findOrFail($id);
+
+        return view('events.update', ['event' => $event]);
     
     }
 
@@ -110,7 +113,32 @@ class EventController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        $event->title = $request->title;
+        $event->date = $request->date;
+        $event->descripition = $request->descripition;
+        $event->city = $request->city;
+        $event->private = $request->private;
+        $event->items = $request->items;
+
+        if($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            $imageName = md5($requestImage->getClientOriginalName() . strtotime("now")) . "." . $extension;
+
+            $request->image->move(public_path('img/events'), $imageName);
+
+            $event->image = $imageName;
+        }
+
+        
+
+        $event->save();
+
+        return redirect('/dashboard')->with('msg', 'Evento editado com sucesso!');
     }
 
     /**
