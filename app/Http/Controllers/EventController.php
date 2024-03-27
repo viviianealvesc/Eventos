@@ -94,7 +94,9 @@ class EventController extends Controller
 
         $events = $user->events; //este events foi criado la no model
 
-        return view('events.dashboard', ['events' => $events]);
+        $eventsAsParticipant = $user->eventsAsParticipant;
+
+        return view('events.dashboard', ['events' => $events, 'eventsAsParticipant' => $eventsAsParticipant]);
     }
 
     /**
@@ -102,7 +104,13 @@ class EventController extends Controller
      */
     public function edit(string $id)
     {
+        $user = auth()->user();
+
         $event = Event::findOrFail($id);
+
+        if($user->id != $event->user_id) {
+            return redirect('/dashboard');
+        }
 
         return view('events.update', ['event' => $event]);
     
@@ -149,6 +157,17 @@ class EventController extends Controller
         Event::findOrFail($id)->delete();
 
         return redirect('/dashboard')->with('msg', 'Evento deletado com sucesso!');
+
+    }
+
+    public function joinEvent($id) {
+        $user = auth()->user();
+
+        $user->eventsAsParticipant()->attach($id);
+
+        $event = Event::FindOrFail($id);
+
+        return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento: ' . $event->title);
 
     }
 }

@@ -23,7 +23,7 @@
             <img src="/img/events/{{ $event->image }}" alt="{{$event->text}}">
             <p class="card-date">{{ date('d/m/y', strtotime($event->date)) }}</p>
             <h5 class="card-title">{{ $event->title }}</h5>
-            <p class="card-participants">x participantes</p>
+            <p class="card-participants">{{ count($event->users) }} participantes</p>
             <a href="events/{{$event->id}}" class="btn btn-primary btn-card">Saber mais  ></a>
           </div>
         @endforeach
