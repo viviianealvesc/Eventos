@@ -84,9 +84,28 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         //Pega o id de um usuario especifico
+        //Aqui eu to pegando o id do usuario que seja igual o id do evento clicado, para que assim a gente consiga exibir o nome do dono do evento
         $eventOwer = User::where('id', $event->user_id)->first()->toArray();
 
-        return view('events.show', ['event' => $event, 'eventOwer' => $eventOwer]);
+        $user = auth()->user();
+        $hasUserJoined = false; //Por padão o usuario não está participando de um evento
+
+        if($user) {
+
+            // Pega o usuario logado e os eventos que esta participando e torna esses dados em uma array
+            $userEvents = $user->eventsAsParticipant->toArray();
+
+            // Como eu quero acessar dados de uma array eu tenho que fazer um foreach
+            foreach($userEvents as $userEvent) {
+
+                //Quando eu vou acessar os dados de uma array eu faço desta forma $userEvent['id']
+                if($userEvent['id'] == $id) {
+                    $hasUserJoined = true;
+                }
+            }
+        }
+
+        return view('events.show', ['event' => $event, 'eventOwer' => $eventOwer, 'hasUserJoined' => $hasUserJoined]);
     }
 
     public function dashboard() {
@@ -169,5 +188,15 @@ class EventController extends Controller
 
         return redirect('/dashboard')->with('msg', 'Sua presença esta confirmada no evento: ' . $event->title);
 
+    }
+
+    public function leaveEvent($id) {
+        $user = auth()->user();
+
+        $user->eventsAsParticipant()->detach($id);
+
+        $event = Event::findOrfail($id);
+
+        return redirect('/dashboard')->with('msg', 'Sua presença foi retirada do evento: ' . $event->title);
     }
 }
